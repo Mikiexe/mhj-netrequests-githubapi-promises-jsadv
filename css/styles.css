@@ -27,7 +27,12 @@ body p {
   align-items: center;
   justify-content: center;
 }
-
+#inputText {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+}
 #buttons {
   margin: 10px 2px 2px 2px;
 }
