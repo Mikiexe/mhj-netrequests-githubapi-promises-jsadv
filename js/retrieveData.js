@@ -1,18 +1,19 @@
 let retrieveBtn = document.querySelector('#retrieveBtn'); //mejor utilizar querySelector
-let userNames = document.querySelectorAll('.names'); //mejor utilizar querySelector
 let resultDiv = document.querySelector('#queryResults'); //mejor utilizar querySelector
 
 console.log(retrieveBtn);
 
 retrieveBtn.addEventListener('click', () => {
   //Loop For necesario para recorrer cada petición
+  let userNames = document.querySelectorAll('.names'); //mejor utilizar querySelector
   for (let userName of userNames) {
-    loading = createElement(resultDiv);
-
+    const loading = createElement(resultDiv);
+    console.log(userName);
     if (userName.value == null || userName.value == '') {
       console.log('usuario no definido');
       continue;
     }
+
     //Fetch a la API, selección y guardado de datos y  generación de respuesta en el DOM
     fetch(`https://api.github.com/users/${userName.value}`)
       .then((response) => response.json())
@@ -34,7 +35,7 @@ function createElement(element) {
   let newLoadingElmnt = document.createElement('p');
   newLoadingElmnt.innerHTML = 'loading...';
   newLoadingElmnt.className = 'loadingElement';
-  resultDiv.appendChild(newLoadingElmnt);
+  element.appendChild(newLoadingElmnt);
 
   return newLoadingElmnt;
 }
